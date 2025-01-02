@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useAuthStore } from '@/stores/auth.store';
 
 const authStore = useAuthStore();
@@ -9,6 +9,11 @@ const password = ref('');
 const handleLogin = () => {
     authStore.login({ email: email.value, password: password.value });
 };
+
+onMounted(() => {
+    authStore.clearErrors();
+});
+
 </script>
 
 
