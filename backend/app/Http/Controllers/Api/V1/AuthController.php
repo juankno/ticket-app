@@ -15,6 +15,13 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+
+    /**
+     * Register a new user.
+     *
+     * @param RegisterRequest $request
+     * @return JsonResponse
+     */
     public function register(RegisterRequest $request): JsonResponse
     {
         $userData = $request->validated();
@@ -33,6 +40,12 @@ class AuthController extends Controller
         ], Response::HTTP_CREATED);
     }
 
+    /**
+     * Log in an existing user.
+     *
+     * @param LoginRequest $request
+     * @return JsonResponse
+     */
     public function login(LoginRequest $request): JsonResponse
     {
         if (!Auth::attempt($request->validated())) {
@@ -45,19 +58,32 @@ class AuthController extends Controller
         $user = Auth::user();
         $request->session()->regenerate();
 
-        return response()->json([
+        return response()->json(
             new UserResource($user),
-        ], Response::HTTP_OK);
+            Response::HTTP_OK
+        );
     }
 
-
+    /**
+     * Get the authenticated user.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function user(Request $request): JsonResponse
     {
-        return response()->json([
+        return response()->json(
             new UserResource($request->user()),
-        ], Response::HTTP_OK);
+            Response::HTTP_OK
+        );
     }
 
+    /**
+     * Log out the authenticated user.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function logout(Request $request): JsonResponse
     {
         $request->user()->tokens()->delete();
