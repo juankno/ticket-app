@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\V1\LoginRequest;
 use App\Http\Requests\Api\V1\RegisterRequest;
+use App\Http\Resources\Api\V1\UserResource;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -37,7 +38,7 @@ class AuthController extends Controller
         if (!Auth::attempt($request->validated())) {
             return response()->json([
                 'success' => false,
-                'message' => 'Invalid credentials'
+                'message' => 'The provided credentials are incorrect.'
             ], Response::HTTP_UNAUTHORIZED);
         }
 
@@ -45,7 +46,7 @@ class AuthController extends Controller
         $request->session()->regenerate();
 
         return response()->json([
-            'user' => $user,
+            new UserResource($user),
         ], Response::HTTP_OK);
     }
 
@@ -53,7 +54,7 @@ class AuthController extends Controller
     public function user(Request $request): JsonResponse
     {
         return response()->json([
-            'user' => $request->user()
+            new UserResource($request->user()),
         ], Response::HTTP_OK);
     }
 
@@ -67,6 +68,6 @@ class AuthController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Logged out'
-        ], Response::HTTP_OK);
+        ], Response::HTTP_NO_CONTENT);
     }
 }
