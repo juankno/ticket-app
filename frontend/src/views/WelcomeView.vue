@@ -3,37 +3,126 @@
 </script>
 
 <template>
-    <div class="welcome-container">
-        <div class="flex bg-color justify-end items-start">
-            <RouterLink to="/login"
-                class="flex items-center px-5 py-2 m-4 border rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white">
-                Login
-            </RouterLink>
-            <RouterLink to="/register"
-                class="flex items-center px-5 py-2 m-4 border rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white">
-                Register
-            </RouterLink>
-        </div>
-        <div class="m-10 p-10 lg:mt-24 flex flex-col justify-center bg-slate-50/50 rounded-xl">
-            <h1 class="text-6xl text-emerald-950">TicketApp</h1>
-            <p class="text-2xl mt-10 text-emerald-900">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, a. Dolor,
-                optio deserunt excepturi modi repellendus quisquam id vitae,
-                fugiat rerum ipsa inventore officiis distinctio animi iste deleniti amet architecto.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, a. Dolor,
-                optio deserunt excepturi modi repellendus quisquam id vitae,
-                fugiat rerum ipsa inventore officiis distinctio animi iste deleniti amet architecto.
-            </p>
+    <div class="bg-white">
+        <header class="absolute inset-x-0 top-0 z-50">
+            <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+                <div class="flex lg:flex-1">
+                    <a href="#" class="-m-1.5 p-1.5">
+                        <span class="sr-only">TicketApp</span>
+                        <img class="h-8 w-auto"
+                            src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600" alt="">
+                    </a>
+                </div>
+                <div class="flex lg:hidden">
+                    <button type="button"
+                        class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                            aria-hidden="true" data-slot="icon">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="hidden lg:flex lg:gap-x-12">
+                    <a href="#" class="text-sm/6 font-semibold text-gray-900">Product</a>
+                    <a href="#" class="text-sm/6 font-semibold text-gray-900">Features</a>
+                    <a href="#" class="text-sm/6 font-semibold text-gray-900">Marketplace</a>
+                    <a href="#" class="text-sm/6 font-semibold text-gray-900">Company</a>
+                </div>
+                <div class="hidden lg:flex  lg:gap-x-8 lg:flex-1 lg:justify-end">
+                    <RouterLink to="/login" class="text-sm/6 font-semibold text-gray-900">Log in </RouterLink>
+                    <RouterLink to="/register" class="text-sm/6 font-semibold text-gray-900">Register </RouterLink>
+
+                </div>
+            </nav>
+            <!-- Mobile menu, show/hide based on menu open state. -->
+            <div class="lg:hidden" role="dialog" aria-modal="true">
+                <!-- Background backdrop, show/hide based on slide-over state. -->
+                <div class="fixed inset-0 z-50"></div>
+                <div
+                    class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+                    <div class="flex items-center justify-between">
+                        <a href="#" class="-m-1.5 p-1.5">
+                            <span class="sr-only">TicketApp</span>
+                            <img class="h-8 w-auto"
+                                src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600" alt="">
+                        </a>
+                        <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
+                            <span class="sr-only">Close menu</span>
+                            <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                aria-hidden="true" data-slot="icon">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="mt-6 flow-root">
+                        <div class="-my-6 divide-y divide-gray-500/10">
+                            <div class="space-y-2 py-6">
+                                <a href="#"
+                                    class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Product</a>
+                                <a href="#"
+                                    class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Features</a>
+                                <a href="#"
+                                    class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Marketplace</a>
+                                <a href="#"
+                                    class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Company</a>
+                            </div>
+                            <div class="py-6">
+                                <RouterLink to="/login"
+                                    class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">
+                                    Log
+                                    in</RouterLink>
+                                <RouterLink to="/register"
+                                    class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">
+                                    Register</RouterLink>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="relative isolate px-6 pt-14 lg:px-8">
+            <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+                aria-hidden="true">
+                <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+                    style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+                </div>
+            </div>
+            <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+                <div class="hidden sm:mb-8 sm:flex sm:justify-center">
+                    <div
+                        class="relative rounded-full px-3 py-1 text-sm/6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+                        Announcing our next round of funding. <a href="#" class="font-semibold text-indigo-600"><span
+                                class="absolute inset-0" aria-hidden="true"></span>Read more <span
+                                aria-hidden="true">&rarr;</span></a>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h1 class="text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">Data to
+                        enrich your online business</h1>
+                    <p class="mt-8 text-pretty text-lg font-medium text-gray-500 sm:text-xl/8">Anim aute id magna aliqua
+                        ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam
+                        occaecat.</p>
+                    <div class="mt-10 flex items-center justify-center gap-x-6">
+                        <a href="#"
+                            class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get
+                            started</a>
+                        <a href="#" class="text-sm/6 font-semibold text-gray-900">Learn more <span
+                                aria-hidden="true">→</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+                aria-hidden="true">
+                <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
+                    style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+                </div>
+            </div>
         </div>
     </div>
+
 </template>
 
-<style scoped>
-.welcome-container {
-    min-width: 100vw;
-    min-height: 100vh;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-image: url('data:image/svg+xml,<svg id="visual" viewBox="0 0 900 600" width="900" height="600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><path d="M512 600L530 566.7C548 533.3 584 466.7 641 400C698 333.3 776 266.7 722 200C668 133.3 482 66.7 389 33.3L296 0L900 0L900 33.3C900 66.7 900 133.3 900 200C900 266.7 900 333.3 900 400C900 466.7 900 533.3 900 566.7L900 600Z" fill="%23d3eadc"></path><path d="M125 600L198.5 566.7C272 533.3 419 466.7 477.5 400C536 333.3 506 266.7 450.5 200C395 133.3 314 66.7 273.5 33.3L233 0L297 0L390 33.3C483 66.7 669 133.3 723 200C777 266.7 699 333.3 642 400C585 466.7 549 533.3 531 566.7L513 600Z" fill="%23c6e3d0"></path><path d="M17 600L65 566.7C113 533.3 209 466.7 273.5 400C338 333.3 371 266.7 356 200C341 133.3 278 66.7 246.5 33.3L215 0L234 0L274.5 33.3C315 66.7 396 133.3 451.5 200C507 266.7 537 333.3 478.5 400C420 466.7 273 533.3 199.5 566.7L126 600Z" fill="%23baddc5"></path><path d="M0 600L0 566.7C0 533.3 0 466.7 0 400C0 333.3 0 266.7 0 200C0 133.3 0 66.7 0 33.3L0 0L216 0L247.5 33.3C279 66.7 342 133.3 357 200C372 266.7 339 333.3 274.5 400C210 466.7 114 533.3 66 566.7L18 600Z" fill="%23add7ba"></path></svg>');
-}
-</style>
+<style scoped></style>
