@@ -11,8 +11,8 @@ const state = reactive({
 
 onMounted(async () => {
     try {
-        const response = await axios.get(`/api/tickets`);
-        state.tickets = response.data.tickets
+        const response = await axios.get(`/api/v1/tickets`);
+        state.tickets = response.data.data;
 
     } catch (error) {
         console.error('Error fetching tickets', error);
