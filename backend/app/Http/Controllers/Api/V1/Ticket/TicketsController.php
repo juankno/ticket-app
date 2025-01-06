@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Api\V1\Ticket;
 
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Pagination\LengthAwarePaginator;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTicketRequest;
 use App\Http\Requests\UpdateTicketRequest;
 use App\Http\Resources\Api\V1\TicketResource;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class TicketsController extends Controller
 {
@@ -16,11 +17,11 @@ class TicketsController extends Controller
      * Display a listing of the resource.
      *
      * @param Request $request
-     * @return ResourceCollection
+     * @response AnonymousResourceCollection<LengthAwarePaginator<TicketResource>>
      */
-    public function index(Request $request): ResourceCollection
+    public function index(Request $request)
     {
-        return TicketResource::collection(Ticket::all());
+        return TicketResource::collection(Ticket::paginate($request->integer('per_page', 15)));
     }
 
     /**
