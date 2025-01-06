@@ -19,6 +19,7 @@ class AuthController extends Controller
     /**
      * Register a new user.
      *
+     * @unauthenticated
      * @param RegisterRequest $request
      * @return JsonResponse
      */
@@ -43,6 +44,7 @@ class AuthController extends Controller
     /**
      * Log in an existing user.
      *
+     * @unauthenticated
      * @param LoginRequest $request
      * @return JsonResponse
      */
