@@ -19,6 +19,7 @@ class TicketReportController extends Controller
         return new JsonResponse([
             'new' => rand(1, 10),
             'open' => rand(1, 10),
+            'closed' => rand(1, 10),
         ]);
     }
 }
