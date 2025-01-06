@@ -25,7 +25,7 @@ onMounted(async () => {
         <NavBar />
         <div>
             <h1 class="text-7xl font-thin mx-10 mt-20">Tickets</h1>
-            <div class="m-10 flex flex-col gap-5">
+            <div class="m-10 flex flex-wrap gap-5">
                 <TicketCard v-for="ticket in state.tickets" :key="ticket.id" :ticket="ticket" />
             </div>
         </div>
