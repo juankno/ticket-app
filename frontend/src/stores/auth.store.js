@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import router from '@/router';
+import axios from 'axios';
 
 export const useAuthStore = defineStore('auth', {
     state: () => ({
@@ -8,29 +9,73 @@ export const useAuthStore = defineStore('auth', {
             'email': '',
         },
         isAuthenticated: null,
+        flash: '',
         errors: {},
-        flash: ''
     }),
     actions: {
         async login(credentials) {
-            this.isAuthenticated = true;
-            this.user = {
-                'name': 'Username',
-                'email': 'user@user.com',
-            };
+            await axios.get('/sanctum/csrf-cookie');
 
-            console.log('Login');
-            router.push('/home');
+            try {
+
+                const response = await axios.post('/api/v1/login', credentials)
+
+                if (response.data && response.status === 200) {
+                    this.user = response.data;
+                    this.isAuthenticated = true;
+
+                    router.push('/home');
+                }
+
+            } catch (error) {
+                if (error) {
+                    this.errors.value = { message: error.response.data.message };
+                } else {
+                    this.errors.value = { message: 'An error occurred. Please try again later.' };
+                }
+            }
+
         },
         async register(credentials) {
-            console.log('register');
-            router.push('/login');
+            await axios.get('/sanctum/csrf-cookie');
+
+            try {
+
+                const response = await axios.post('/api/v1/register', credentials)
+
+                if (response.data && response.status === 201) {
+                    this.flash = response.data.message;
+
+                    router.push('/login');
+                }
+
+            } catch (error) {
+                if (error) {
+                    this.errors.value = { message: error.response.data.message };
+                } else {
+                    this.errors.value = { message: 'An error occurred. Please try again later.' };
+                }
+            }
         },
-        logout() {
+
+        async user() {
+            try {
+
+                const repsonse = await axios.get('/api/v1/user');
+                this.user = repsonse.data;
+                this.isAuthenticated = true;
+
+            } catch (error) {
+                console.error('User not authenticated', error);
+                this.user = null;
+                this.isAuthenticated = false;
+            }
+        },
+        async logout() {
+            await axios.post('/api/v1/logout');
             this.user = null;
             this.isAuthenticated = false;
 
-            console.log('Logout');
             router.push('/login');
         },
         clearErrors() {
