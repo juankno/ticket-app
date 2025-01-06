@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 class TicketsController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the tickets.
      *
      * @param Request $request
      * @response AnonymousResourceCollection<LengthAwarePaginator<TicketResource>>
@@ -36,14 +36,14 @@ class TicketsController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified ticket.
      *
      * @param Ticket $ticket
-     * @return JsonResponse
+     * @return TicketResource
      */
     public function show(Ticket $ticket)
     {
-        //
+        return new TicketResource($ticket);
     }
 
     /**
@@ -59,13 +59,15 @@ class TicketsController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified ticket.
      *
      * @param Ticket $ticket
-     * @return JsonResponse
+     * @return noContent
      */
     public function destroy(Ticket $ticket)
     {
-        //
+        $ticket->delete();
+
+        return response()->noContent();
     }
 }
