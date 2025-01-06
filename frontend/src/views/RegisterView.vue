@@ -45,6 +45,11 @@ onMounted(async () => {
                         <h3 class="text-gray-800 text-2xl font-bold">Create an account</h3>
                     </div>
 
+                    <div
+                        :class="[authStore.errors.value ? 'block' : 'hidden', 'bg-red-100 border rounded-xl w-full p-5 mb-10']">
+                        <p class="text-neutral-700" v-for="error in authStore.errors.value" :key="error">{{ error }}</p>
+                    </div>
+
                     <div class="space-y-6">
                         <div>
                             <label class="text-gray-800 text-sm mb-2 block">Name</label>
