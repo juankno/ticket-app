@@ -1,6 +1,6 @@
-# TicketApp-vue
+# TicketApp
 
-TicketApp-vue es una aplicación web para la gestión de tickets de soporte. Este proyecto está dividido en dos partes principales: el backend desarrollado con Laravel y el frontend desarrollado con Vue.js.
+TicketApp es una aplicación web para la gestión de tickets de soporte. Este proyecto está dividido en dos partes principales: el backend desarrollado con Laravel y el frontend desarrollado con Vue.js.
 
 ## Estructura del Proyecto
 
@@ -15,12 +15,12 @@ Para configurar el proyecto completo, sigue estos pasos:
 
 1. Clona el repositorio:
     ```bash
-    git clone https://github.com/tu-usuario/TicketApp-vue.git
+    git clone https://github.com/tu-usuario/TicketApp.git
     ```
 
 2. Navega al directorio del proyecto:
     ```bash
-    cd TicketApp-vue
+    cd TicketApp
     ```
 
 3. Sigue las instrucciones de instalación en los archivos README de las carpetas `backend` y `frontend`.
