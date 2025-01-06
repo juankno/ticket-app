@@ -20,7 +20,7 @@ export const useAuthStore = defineStore('auth', {
 
                 const response = await axios.post('/api/v1/login', credentials)
 
-                if (response.data && response.status === 200) {
+                if (response.data) {
                     this.user = response.data;
                     this.isAuthenticated = true;
 
