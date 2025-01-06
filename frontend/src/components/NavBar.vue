@@ -17,7 +17,7 @@ const isActive = (routePath) => useRoute().path === routePath;
                 Tickets
             </RouterLink>
         </div>
-        <a @click.prevent="authStore.logout()"
+        <a role="button" @click.prevent="authStore.logout()"
             class="flex items-center px-5 py-2 m-4 border rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white">
             Logout
         </a>
