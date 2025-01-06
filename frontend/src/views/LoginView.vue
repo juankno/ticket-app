@@ -3,8 +3,8 @@ import { onMounted, ref } from 'vue';
 import { useAuthStore } from '@/stores/auth.store';
 
 const authStore = useAuthStore();
-const email = ref('');
-const password = ref('');
+const email = ref('test@example.com');
+const password = ref('password');
 
 const handleLogin = () => {
     authStore.login({ email: email.value, password: password.value });
@@ -38,13 +38,21 @@ onMounted(() => {
                         </p>
                     </div>
 
+                    <div
+                        :class="[authStore.flash !== '' ? 'block' : 'hidden', 'bg-green-100 border rounded-xl w-full p-5 mb-10']">
+                        <p class="text-neutral-700">{{ authStore.flash }}</p>
+                    </div>
+                    <div
+                        :class="[authStore.errors.value ? 'block' : 'hidden', 'bg-red-100 border rounded-xl w-full p-5 mb-10']">
+                        <p class="text-neutral-700" v-for="error in authStore.errors.value" :key="error">{{ error }}</p>
+                    </div>
+
                     <div>
                         <label class="text-gray-800 text-[15px] mb-2 block">Email</label>
                         <div class="relative flex items-center">
                             <input name="email" type="text" required
                                 class="w-full text-sm text-gray-800 bg-gray-100 focus:bg-transparent px-4 py-3.5 rounded-md outline-blue-600"
-                                v-model="email"
-                                placeholder="Enter email" />
+                                v-model="email" placeholder="Enter email" />
                             <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb"
                                 class="w-[18px] h-[18px] absolute right-4" viewBox="0 0 682.667 682.667">
                                 <defs>
@@ -69,8 +77,7 @@ onMounted(() => {
                         <div class="relative flex items-center">
                             <input name="password" type="password" required
                                 class="w-full text-sm text-gray-800 bg-gray-100 focus:bg-transparent px-4 py-3.5 rounded-md outline-blue-600"
-                                v-model="password"
-                                placeholder="Enter password" />
+                                v-model="password" placeholder="Enter password" />
                             <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb"
                                 class="w-[18px] h-[18px] absolute right-4 cursor-pointer" viewBox="0 0 128 128">
                                 <path
