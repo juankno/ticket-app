@@ -16,7 +16,7 @@ const authStore = useAuthStore();
 
 onMounted(async () => {
     try {
-        const response = await axios.get(`/api/home`);
+        const response = await axios.get(`/api/v1/tickets/report`);
         state.statistics.new = response.data.new;
         state.statistics.open = response.data.open;
 
